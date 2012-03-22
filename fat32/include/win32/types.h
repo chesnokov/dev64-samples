@@ -1,5 +1,9 @@
-#ifndef _WIN32_DEFS_H_
-#define _WIN32_DEFS_H_
+/*
+   This file contains helper types and constant definitions
+   related to Win32
+ */
+#ifndef _WIN32_TYPES_H_
+#define _WIN32_TYPES_H_
 
 #ifdef _WIN32
   #include <windows.h>

@@ -1,5 +1,5 @@
-#ifndef _FAT32_STRUCT_H_
-#define _FAT32_STRUCT_H_
+#ifndef _FAT32_TYPES_H_
+#define _FAT32_TYPES_H_
 
 #include <win32/defs.h>
   
@@ -45,7 +45,7 @@ typedef struct {
   UINT32 BS_VolID;          // 0x43 Volume ID 32 bit value
   char BS_VolLab[11];       // 0x47
   char BS_FilSysType[8];    // 0x52 "FAT32   "
-} BPB_FAT32_T;
+} FAT32_BPB_T;
 
 #pragma pack(pop)
 

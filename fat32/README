@@ -5,3 +5,11 @@ structure.
 Read more at: 
    http://dev64.wordpress.com/2012/03/21/reading-fat32-in-windows/
 
+
+Project1.dev,Project.layout are Dev-C++ project files
+Use Dev-C++ for build. (Or MiniGW).
+
+make -f Makefile.win
+
+
+

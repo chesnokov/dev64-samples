@@ -3,8 +3,8 @@
   This API is to be used for experiments with FAT32 flash drive
   in Windows.
 */
-#ifndef _FAT32API_H_
-#define _FAT32API_H_
+#ifndef _FAT32_API_H_
+#define _FAT32_API_H_
 
 #include <win32/types.h>
 

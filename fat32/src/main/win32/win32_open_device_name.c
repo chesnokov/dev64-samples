@@ -11,7 +11,7 @@
        false if not success
        true if success, handle in 1-st parameter updated
 */
-bool win32_open_device(HANDLE * handle, const char * deviceName) {
+bool win32_open_device_name(HANDLE * handle, const char * deviceName) {
   bool result = (deviceName != 0);
   if (result) {
     *handle = CreateFile(deviceName, GENERIC_READ, 

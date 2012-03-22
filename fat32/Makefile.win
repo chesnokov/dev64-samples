@@ -5,8 +5,8 @@ CPP  = g++.exe -D__DEBUG__
 CC   = gcc.exe -D__DEBUG__
 WINDRES = windres.exe
 RES  = 
-OBJ  = src/main/main.o src/main/win32/win32_open_device.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o $(RES)
-LINKOBJ  = src/main/main.o src/main/win32/win32_open_device.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o $(RES)
+OBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o $(RES)
+LINKOBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib"  -g3 
 INCS =  -I"C:/Dev-Cpp/include"  -I"./include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"./include" 
@@ -29,9 +29,6 @@ $(BIN): $(OBJ)
 src/main/main.o: src/main/main.c
 	$(CC) -c src/main/main.c -o src/main/main.o $(CFLAGS)
 
-src/main/win32/win32_open_device.o: src/main/win32/win32_open_device.c
-	$(CC) -c src/main/win32/win32_open_device.c -o src/main/win32/win32_open_device.o $(CFLAGS)
-
 src/main/win32/win32_get_hdd_device_name.o: src/main/win32/win32_get_hdd_device_name.c
 	$(CC) -c src/main/win32/win32_get_hdd_device_name.c -o src/main/win32/win32_get_hdd_device_name.o $(CFLAGS)
 
@@ -40,3 +37,15 @@ src/main/fat32/fat32_open_device.o: src/main/fat32/fat32_open_device.c
 
 src/main/fat32/fat32_close.o: src/main/fat32/fat32_close.c
 	$(CC) -c src/main/fat32/fat32_close.c -o src/main/fat32/fat32_close.o $(CFLAGS)
+
+src/main/win32/win32_open_device_name.o: src/main/win32/win32_open_device_name.c
+	$(CC) -c src/main/win32/win32_open_device_name.c -o src/main/win32/win32_open_device_name.o $(CFLAGS)
+
+src/main/win32/win32_open_device_id.o: src/main/win32/win32_open_device_id.c
+	$(CC) -c src/main/win32/win32_open_device_id.c -o src/main/win32/win32_open_device_id.o $(CFLAGS)
+
+src/main/win32/win32_read_sector.o: src/main/win32/win32_read_sector.c
+	$(CC) -c src/main/win32/win32_read_sector.c -o src/main/win32/win32_read_sector.o $(CFLAGS)
+
+src/main/hdd/hdd_get_active_partition.o: src/main/hdd/hdd_get_active_partition.c
+	$(CC) -c src/main/hdd/hdd_get_active_partition.c -o src/main/hdd/hdd_get_active_partition.o $(CFLAGS)
