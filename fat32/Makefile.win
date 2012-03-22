@@ -1,0 +1,42 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = src/main/main.o src/main/win32/win32_open_device.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o $(RES)
+LINKOBJ  = src/main/main.o src/main/win32/win32_open_device.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  -g3 
+INCS =  -I"C:/Dev-Cpp/include"  -I"./include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"./include" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS)   -g -fverbose-asm -g3
+CFLAGS = $(INCS)   -g -fverbose-asm -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+src/main/main.o: src/main/main.c
+	$(CC) -c src/main/main.c -o src/main/main.o $(CFLAGS)
+
+src/main/win32/win32_open_device.o: src/main/win32/win32_open_device.c
+	$(CC) -c src/main/win32/win32_open_device.c -o src/main/win32/win32_open_device.o $(CFLAGS)
+
+src/main/win32/win32_get_hdd_device_name.o: src/main/win32/win32_get_hdd_device_name.c
+	$(CC) -c src/main/win32/win32_get_hdd_device_name.c -o src/main/win32/win32_get_hdd_device_name.o $(CFLAGS)
+
+src/main/fat32/fat32_open_device.o: src/main/fat32/fat32_open_device.c
+	$(CC) -c src/main/fat32/fat32_open_device.c -o src/main/fat32/fat32_open_device.o $(CFLAGS)
+
+src/main/fat32/fat32_close.o: src/main/fat32/fat32_close.c
+	$(CC) -c src/main/fat32/fat32_close.c -o src/main/fat32/fat32_close.o $(CFLAGS)

@@ -1,0 +1,7 @@
+This directory contains the source code of FAT32 reading test utility. 
+This utility developed for FAT32 study. It demonstrates FAT32 filesystem
+structure.
+
+Read more at: 
+   http://dev64.wordpress.com/2012/03/21/reading-fat32-in-windows/
+
