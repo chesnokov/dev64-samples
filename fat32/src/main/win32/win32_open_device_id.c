@@ -15,6 +15,6 @@ bool win32_open_device_id(HANDLE * handle, UINT8 deviceId) {
   char deviceName[32];
   bool result = 
     win32_get_hdd_device_name(deviceId, deviceName, sizeof(deviceName));
-  result = result & win32_open_device_name(handle, deviceName);
+  result = result && win32_open_device_name(handle, deviceName);
   return result;
 }

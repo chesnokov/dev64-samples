@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
   HANDLE handle;
   HDD_PARTITION_T * partition; 
   bool result = win32_open_device_id(&handle, 1);
-  result = result & win32_read_sector(handle, &mbr, 0);
-  result = result & hdd_get_active_partition(&mbr, &partition);
+  result = result && win32_read_sector(handle, &mbr, 0);
+  result = result && hdd_get_active_partition(&mbr, &partition);
   printf( result ? 
     "active partition start sector %x" : "false" , partition->lba_start );
   return 0;
