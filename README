@@ -5,3 +5,7 @@ Subdirectories:
 wpp 
    WordPress Presprocessor Java Utility 
    see: http://dev64.wordpress.com/2012/03/21/wordpress-markup-preprocessor/
+   
+fat32
+   FAT32 filesystem test read utility
+   see: http://dev64.wordpress.com/2012/03/21/reading-fat32-in-windows/
