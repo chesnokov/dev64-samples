@@ -5,8 +5,8 @@ CPP  = g++.exe -D__DEBUG__
 CC   = gcc.exe -D__DEBUG__
 WINDRES = windres.exe
 RES  = 
-OBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o $(RES)
-LINKOBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o $(RES)
+OBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o $(RES)
+LINKOBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib"  -g3 
 INCS =  -I"C:/Dev-Cpp/include"  -I"./include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"./include" 
@@ -49,3 +49,33 @@ src/main/win32/win32_read_sector.o: src/main/win32/win32_read_sector.c
 
 src/main/hdd/hdd_get_active_partition.o: src/main/hdd/hdd_get_active_partition.c
 	$(CC) -c src/main/hdd/hdd_get_active_partition.c -o src/main/hdd/hdd_get_active_partition.o $(CFLAGS)
+
+src/main/hdd/hdd_open_device.o: src/main/hdd/hdd_open_device.c
+	$(CC) -c src/main/hdd/hdd_open_device.c -o src/main/hdd/hdd_open_device.o $(CFLAGS)
+
+src/main/fat32/fat32_print_control_block.o: src/main/fat32/fat32_print_control_block.c
+	$(CC) -c src/main/fat32/fat32_print_control_block.c -o src/main/fat32/fat32_print_control_block.o $(CFLAGS)
+
+src/main/fat32/fat32_get_first_data_sector.o: src/main/fat32/fat32_get_first_data_sector.c
+	$(CC) -c src/main/fat32/fat32_get_first_data_sector.c -o src/main/fat32/fat32_get_first_data_sector.o $(CFLAGS)
+
+src/main/fat32/fat32_get_sector_by_cluster.o: src/main/fat32/fat32_get_sector_by_cluster.c
+	$(CC) -c src/main/fat32/fat32_get_sector_by_cluster.c -o src/main/fat32/fat32_get_sector_by_cluster.o $(CFLAGS)
+
+src/main/fat32/fat32_get_fat_entry_by_cluster.o: src/main/fat32/fat32_get_fat_entry_by_cluster.c
+	$(CC) -c src/main/fat32/fat32_get_fat_entry_by_cluster.c -o src/main/fat32/fat32_get_fat_entry_by_cluster.o $(CFLAGS)
+
+src/main/fat32/fat32_read_sectors.o: src/main/fat32/fat32_read_sectors.c
+	$(CC) -c src/main/fat32/fat32_read_sectors.c -o src/main/fat32/fat32_read_sectors.o $(CFLAGS)
+
+src/main/fat32/fat32_get_cluster_size.o: src/main/fat32/fat32_get_cluster_size.c
+	$(CC) -c src/main/fat32/fat32_get_cluster_size.c -o src/main/fat32/fat32_get_cluster_size.o $(CFLAGS)
+
+src/main/fat32/fat32_print_dir_entry.o: src/main/fat32/fat32_print_dir_entry.c
+	$(CC) -c src/main/fat32/fat32_print_dir_entry.c -o src/main/fat32/fat32_print_dir_entry.o $(CFLAGS)
+
+src/test/writeBufferToFile.o: src/test/writeBufferToFile.c
+	$(CC) -c src/test/writeBufferToFile.c -o src/test/writeBufferToFile.o $(CFLAGS)
+
+src/test/openOutputFile.o: src/test/openOutputFile.c
+	$(CC) -c src/test/openOutputFile.c -o src/test/openOutputFile.o $(CFLAGS)

@@ -2,26 +2,18 @@
 #include <win32/api.h>
 
 /*
-  openes fat32 filesystem at specified device
-  parameters:
-    input:
-      deviceId - device Id number >=0 && <=99
-    output:
-       cb - structure that contains data required for subsequent
-          read function calls
-    return:
+  opens fat32 filesystem
+  in fact reads filesystem bootsector
+    returns:
        false if error
        true if success and fills cb with data
  */
-bool fat32_open_device(FAT32_CB_T * cb, UINT8 deviceId) {
-  bool result = cb != 0;
+bool fat32_open_device(FAT32_CB_T * cb, HDD_CB_T * hdd) {
+  cb->hdd_cb = hdd;
+  bool result =
+    win32_read_sector(hdd->handle, &cb->bootSector , hdd->lbaStart);
   if (result) {
-    cb->deviceId = deviceId;
-    result = result && 
-      win32_get_hdd_device_name(deviceId, 
-        cb->deviceName, sizeof(cb->deviceId));
-    result = result &&
-      win32_open_device_name(&cb->deviceHandle, cb->deviceName);
+     cb->firstDataSector = fat32_get_first_data_sector(cb);
   }
   return result;
 }

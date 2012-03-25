@@ -1,7 +1,7 @@
 #ifndef _FAT32_TYPES_H_
 #define _FAT32_TYPES_H_
 
-#include <win32/defs.h>
+#include <win32/types.h>
   
 #define FAT32_FREE   0x00000000L
 #define FAT32_BAD    0x0ffffff7L
@@ -46,6 +46,33 @@ typedef struct {
   char BS_VolLab[11];       // 0x47
   char BS_FilSysType[8];    // 0x52 "FAT32   "
 } FAT32_BPB_T;
+
+/*
+  FAT32 Boot Sector
+ */
+typedef struct {
+  FAT32_BPB_T bpb;          // FAT32 BPB
+  UINT8 code[0x1a4];        // boot code
+  UINT16 signature;         // 0xaa55
+} FAT32_BS_T;
+
+/*
+  FAT32 Dir Entry
+ */
+typedef struct {
+  char DIR_Name[11];
+  UINT8 DIR_Attr;
+  UINT8 DIR_NTRes;
+  UINT8 DIR_CrtTime_Tenth;  // time in tenth of second
+  UINT16 DIR_CrtTime;       // seconds
+  UINT16 DIR_CrtDate;
+  UINT16 DIR_LstAccDate;
+  UINT16 DIR_FstClusHI;     // +20 first cluster Hi
+  UINT16 DIR_WrtTime;
+  UINT16 DIR_WrtDate;
+  UINT16 DIR_FstClusLO;     // +26 first cluster Lo
+  UINT32 DIR_FileSize;
+} FAT32_DIR_ENTRY_T;
 
 #pragma pack(pop)
 

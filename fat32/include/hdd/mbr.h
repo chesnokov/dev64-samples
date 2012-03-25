@@ -24,6 +24,13 @@ typedef struct {
   UINT16 signature;               // MBR signature
 } HDD_MBR_T;
 
+typedef struct {
+  HANDLE handle;             // device handle (for read/write functions)
+  UINT32 lbaStart;           // boot sector lba start address
+  UINT32 lbaEnd;             // boot sector lba end address
+  UINT8  deviceId;           // the windows device id for open function
+} HDD_CB_T;
+
 #pragma pack(pop)
 
 #ifdef __cplusplus

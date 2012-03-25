@@ -11,12 +11,12 @@
     false  if no active partition in MBR
     true   if success, assign partition pointer
  */
-bool 
+bool
   hdd_get_active_partition(
-  const HDD_MBR_T * mbr, HDD_PARTITION_T ** partition) {
-  
+  const HDD_MBR_T * mbr, const HDD_PARTITION_T ** partition) {
+
   bool result = false;
-  HDD_PARTITION_T * p = mbr->partition;
+  const HDD_PARTITION_T * p = mbr->partition;
   int i;
   for(i = 0; i<4; i++,p++) {
     if(p->active == 0x80) {
