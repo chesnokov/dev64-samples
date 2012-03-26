@@ -9,3 +9,10 @@ wpp
 fat32
    FAT32 filesystem test read utility
    see: http://dev64.wordpress.com/2012/03/21/reading-fat32-in-windows/
+
+simple-servlet
+   Simple servlet using Maven
+   see: http://dev64.wordpress.com/2012/03/23/simple-servlet-using-maven/
+
+servlet-parameters
+   Simple JSP form and servlet printing its parameters
