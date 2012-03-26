@@ -16,3 +16,8 @@ simple-servlet
 
 servlet-parameters
    Simple JSP form and servlet printing its parameters
+   see: http://dev64.wordpress.com/2012/03/26/jsp-form-and-servlet-parameters/
+
+servlet-headers
+   Simple JSP form and servlet printing request headers
+   see: http://dev64.wordpress.com/2012/03/26/http-headers-in-servlet/
