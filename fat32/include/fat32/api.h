@@ -24,6 +24,30 @@ typedef struct {
 } FAT32_CB_T;
 
 /*
+   Callback interface for sector data processing
+   Parameters:
+     ifc - pointer to ISPROC interface itself
+     buf - buffer with sector data for processing
+     bufsz - buffer size
+   Return:
+     true - if processing should be stopped
+     false - if processing should be continued
+
+     true means that function has done what it
+     wanted to do
+ */
+typedef struct {
+  void * ptr;
+  bool (*proc) (void * ifc, void * buf, UINT32 bufsz);
+} ISPROC;
+
+typedef struct {
+  void * ptr;
+  bool (*proc) (void * ifc, UINT32 cluster);
+} ICLUSTERS;
+
+
+/*
 */
 bool fat32_open_device(FAT32_CB_T * cb, HDD_CB_T * hdd);
 
@@ -70,10 +94,37 @@ UINT32 fat32_get_cluster_size(const FAT32_CB_T * cb);
   Reads several sectors
  */
 bool fat32_read_sectors(const FAT32_CB_T * cb,
-  void * buffer, UINT32 start_sector, UINT32 sectors);
-
+  UINT32 start_sector, UINT32 sectors, ISPROC * proc );
 
 bool fat32_print_dir_entry(FAT32_DIR_ENTRY_T * entry);
+
+/*
+  Reads cluster chain starting from specified
+  Calls call back interface specified by ISPROC
+ */
+bool fat32_read_cluster_chain(FAT32_CB_T * cb,
+  UINT32 cluster, ISPROC * proc);
+
+
+/*
+  Gets cluster numbers for the cluster chain and
+  pass them for processing in ICLUSTERS interface
+ */
+bool fat32_get_cluster_chain(FAT32_CB_T * cb,
+  UINT32 cluster, ICLUSTERS * proc);
+
+/*
+  Printing values of file clusters starting from specified
+*/
+bool fat32_print_cluster_chain(FAT32_CB_T *cb, UINT32 cluster);
+
+/*
+  Reads specified sector to buffer
+  This function takes into account sector size specified in
+  Partition BPB - BPB_BytsPerSec
+ */
+bool fat32_read_sector(FAT32_CB_T * cb, char * buffer, UINT32 sector);
+
 
 #ifdef __cplusplus
   }

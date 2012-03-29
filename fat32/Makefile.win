@@ -5,9 +5,9 @@ CPP  = g++.exe -D__DEBUG__
 CC   = gcc.exe -D__DEBUG__
 WINDRES = windres.exe
 RES  = 
-OBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o $(RES)
-LINKOBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o $(RES)
-LIBS =  -L"C:/Dev-Cpp/lib"  -g3 
+OBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o src/main/fat32/fat32_search_root_dir.o src/main/fat32/fat32_get_cluster_chain.o src/main/fat32/fat32_print_cluster_chain.o src/main/fat32/fat32_read_cluster_chain.o src/main/fat32/fat32_read_sector.o $(RES)
+LINKOBJ  = src/main/main.o src/main/win32/win32_get_hdd_device_name.o src/main/fat32/fat32_open_device.o src/main/fat32/fat32_close.o src/main/win32/win32_open_device_name.o src/main/win32/win32_open_device_id.o src/main/win32/win32_read_sector.o src/main/hdd/hdd_get_active_partition.o src/main/hdd/hdd_open_device.o src/main/fat32/fat32_print_control_block.o src/main/fat32/fat32_get_first_data_sector.o src/main/fat32/fat32_get_sector_by_cluster.o src/main/fat32/fat32_get_fat_entry_by_cluster.o src/main/fat32/fat32_read_sectors.o src/main/fat32/fat32_get_cluster_size.o src/main/fat32/fat32_print_dir_entry.o src/test/writeBufferToFile.o src/test/openOutputFile.o src/main/fat32/fat32_search_root_dir.o src/main/fat32/fat32_get_cluster_chain.o src/main/fat32/fat32_print_cluster_chain.o src/main/fat32/fat32_read_cluster_chain.o src/main/fat32/fat32_read_sector.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -g  -g3 
 INCS =  -I"C:/Dev-Cpp/include"  -I"./include" 
 CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"./include" 
 BIN  = Project1.exe
@@ -79,3 +79,18 @@ src/test/writeBufferToFile.o: src/test/writeBufferToFile.c
 
 src/test/openOutputFile.o: src/test/openOutputFile.c
 	$(CC) -c src/test/openOutputFile.c -o src/test/openOutputFile.o $(CFLAGS)
+
+src/main/fat32/fat32_search_root_dir.o: src/main/fat32/fat32_search_root_dir.c
+	$(CC) -c src/main/fat32/fat32_search_root_dir.c -o src/main/fat32/fat32_search_root_dir.o $(CFLAGS)
+
+src/main/fat32/fat32_get_cluster_chain.o: src/main/fat32/fat32_get_cluster_chain.c
+	$(CC) -c src/main/fat32/fat32_get_cluster_chain.c -o src/main/fat32/fat32_get_cluster_chain.o $(CFLAGS)
+
+src/main/fat32/fat32_print_cluster_chain.o: src/main/fat32/fat32_print_cluster_chain.c
+	$(CC) -c src/main/fat32/fat32_print_cluster_chain.c -o src/main/fat32/fat32_print_cluster_chain.o $(CFLAGS)
+
+src/main/fat32/fat32_read_cluster_chain.o: src/main/fat32/fat32_read_cluster_chain.c
+	$(CC) -c src/main/fat32/fat32_read_cluster_chain.c -o src/main/fat32/fat32_read_cluster_chain.o $(CFLAGS)
+
+src/main/fat32/fat32_read_sector.o: src/main/fat32/fat32_read_sector.c
+	$(CC) -c src/main/fat32/fat32_read_sector.c -o src/main/fat32/fat32_read_sector.o $(CFLAGS)
