@@ -82,7 +82,7 @@ void
   Search file in root directory
  */
 bool
-  fat32_search_root_dir(const FAT32_CB_T * cb,
+  fat32_search_root_dir(FAT32_CB_T * cb,
     FAT32_DIR_ENTRY_T * entry);
 
 /*

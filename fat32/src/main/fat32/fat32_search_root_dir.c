@@ -29,7 +29,7 @@ bool search_file(void * ifc, void * buf, UINT32 bufsz) {
 
 
 bool
-  fat32_search_root_dir(const FAT32_CB_T * cb,
+  fat32_search_root_dir(FAT32_CB_T * cb,
     FAT32_DIR_ENTRY_T * entry) {
 
   SEARCH_ENTRY search_entry;
@@ -39,11 +39,8 @@ bool
   ISPROC ifc;
   ifc.ptr = &search_entry;
   ifc.proc = search_file;
-  UINT32 rootSector =
-    fat32_get_sector_by_cluster(cb, cb->bootSector.bpb.BPB_RootClus);
 
-  fat32_read_sectors(cb,
-    rootSector, cb->bootSector.bpb.BPB_SecPerClus, &ifc);
+  fat32_read_cluster_chain(cb, cb->bootSector.bpb.BPB_RootClus, &ifc );
 
   return search_entry.result;
 }
