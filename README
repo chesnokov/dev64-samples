@@ -21,3 +21,6 @@ servlet-parameters
 servlet-headers
    Simple JSP form and servlet printing request headers
    see: http://dev64.wordpress.com/2012/03/26/http-headers-in-servlet/
+
+guice-test
+   Simple project for demonstration of Google Guice Dependency Injection framework
